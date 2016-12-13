@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="CRUD en Node.JS">
+    <meta name="description" content="bootstrap Experiencia 4">
     <meta name="author" content="Bastian Toledo Salas">
 
     <title>Creative - Start Bootstrap Theme</title>
@@ -16,8 +16,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" /> //referencia al bootstrap.
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -44,9 +42,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">CRUD en CodeIgniter</a>
             </div>
-
-            <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-3.1.1.min.js"); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

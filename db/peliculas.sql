@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2016 a las 16:10:56
+-- Tiempo de generación: 13-12-2016 a las 17:58:29
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -38,10 +38,10 @@ CREATE TABLE `peliculas` (
 --
 
 INSERT INTO `peliculas` (`nombre`, `descripcion`, `fecha_estreno`, `genero`) VALUES
-('Assassin''s Creed', 'Callum descubre que es el descendiente de una misteriosa sociedad secreta, los Assassins, y que posee increíbles conocimientos y habilidades que le permitirán enfrentarse a la poderosa y opresora organización de los Templarios en el presente.', '2016-12-23', 'Acción, Aventura, Ciencia Ficción'),
-('Passengers', 'Jennifer Lawrence y Chris Pratt son dos pasajeros a bordo de una nave espacial camino de una nueva vida en otro planeta. El viaje cobra un giro letal cuando sus cápsulas de hibernación misteriosamente los hacen despertar 90 años antes de alcanzar su destino.', '2016-12-30', ' Ciencia Ficción, Acción'),
-('Fast and Furious 8', 'una misteriosa mujer (la oscarizada Charlize Theron) seduce a Dom para arrastrarlo al mundo del crimen del que parece no poder escapar, traicionando a aquellos que más le importan, el equipo tendrá que afrontar desafíos que pondrán a todos a prueba hasta límites desconocidos. ', '2017-01-13', ' Acción, Thriller'),
-('Underworld: Guerras de Sangre', 'Underworld: Guerras de Sangre, continua con la Vampire death dealer, Selene (Kate Beckinsale) tras eludir los brutales ataques que recibió de los licántropos y de los vampiros que la traicionaron. Junto a su único aliado, David (Theo James) y su padre Thomas (Charles Dance), debe poner fin a la eterna guerra entre los hombres lobo y los vampiros, aunque eso signifique un último sacrificio.', '2017-01-13', 'Terror, Acción');
+('Assassin''s Creed', 'Callum descubre que es el descendiente de una misteriosa sociedad secreta', '2016-12-23', 'Acción, Aventura, Ciencia Ficción'),
+('Underworld: Guerras de Sangre', 'Continua con la Vampire death dealer, Selene (Kate Beckinsale) tras eludir los brutales ataques que recibió de los licántropos y de los vampiros que la traicionaron. Junto a su único aliado, David (Theo James)', '2017-01-13', 'Terror, Acción'),
+('Passengers', 'Jennifer Lawrence y Chris Pratt son dos pasajeros a bordo de una nave espacial ', '2016-12-30', ' Ciencia Ficción, Acción'),
+('Fast and Furious 8', 'una misteriosa mujer seduce a Dom para arrastrarlo al mundo del crimen del que parece no poder escapar', '2017-01-13', ' Acción, Thriller');
 
 --
 -- Índices para tablas volcadas

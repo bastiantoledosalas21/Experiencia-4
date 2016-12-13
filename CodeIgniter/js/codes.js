@@ -7,42 +7,41 @@
 * @Last Modified time: 2016-12-06 01:39:41
 */
 $(document).ready(function() {
-  var tabla = $('#asignaturas').DataTable({
-    ajax: 'asignaturas/listarAsignaturas',
+  var tabla = $('#peliculas').DataTable({
+    ajax: 'peliculas/listarPeliculas',
     responsive: true,
     dom: 'Bfrtip',
     buttons: [
       {
-        text: '<i class="glyphicon glyphicon-plus"></i> Agregar asignatura',
+        text: '<i class="glyphicon glyphicon-plus"></i> Agregar peliculas',
         class: 'btn btn-success',
         action: function (e, dt, node, config) {
           bootbox.dialog({
-            title: 'Agregar asignatura',
-            message: '' + 
+            title: 'Agregar Peliculas',
+            message: '' +
             '<div class="form-group">' +
               '<div class="input-group">' +
                 '<span class="input-group-addon">' +
                   '<i class="glyphicon glyphicon-barcode"></i>' +
                 '</span>' +
-                '<input type="text" id="agregar_codigo" class="form-control" placeholder="Código de asignatura" required>' +
+                '<input type="text" id="agregar_pelicula" class="form-control" placeholder="Nombre de Pelicula" required>' +
               '</div>' +
             '</div>' +
             '<div class="form-group">' +
               '<div class="input-group">' +
                 '<span class="input-group-addon">' +
-                  '<i class="glyphicon glyphicon-tag"></i>' +
-                '</span>' +
-                '<input type="text" id="agregar_nombre" class="form-control" placeholder="Nombre de asignatura" required>' +
-              '</div>' +
-            '</div>' + 
-            '<div class="form-group">' +
-              '<div class="input-group">' +
-                '<span class="input-group-addon">' +
                   '<i class="glyphicon glyphicon-barcode"></i>' +
                 '</span>' +
-                '<input type="text" id="agregar_cantidadAlumnos" class="form-control" placeholder="Cantidad de alumnos" required>' +
+                '<input type="text" id="agregar_descripcion" class="form-control" placeholder="Descripcion" required>' +
               '</div>' +
             '</div>',
+          '<input type="date" id="agregar_fecha_estreno" class="form-control" placeholder="Fecha_estreno" required>' +
+          '</div>' +
+          '</div>',
+
+        '<input type="date" id="agregar_genero" class="form-control" placeholder="genero" required>' +
+        '</div>' +
+        '</div>',
             buttons: {
               cancel: {
                 label: 'Cancelar',
@@ -57,22 +56,25 @@ $(document).ready(function() {
                 callback: function(e) {
                   e.preventDefault();
                   tabla.row.add({
-                    "codigo": $('#agregar_codigo').val(),
                     "nombre": $('#agregar_nombre').val(),
-                    "cantidadAlumnos": $('#agregar_cantidadAlumnos').val()
+                    "descripcion": $('#agregar_descripcion').val(),
+                    "Fecha_estreno": $('#agregar_fecha_estreno').val(),
+                    "genero": $('#agregar_genero').val()
                   }).draw();
 
                   $.ajax({
-                    url: 'asignaturas/agregar',
+                    url: 'Peliculas/agregar',
                     method: 'post',
                     data: {
-                      codigo: $('#agregar_codigo').val(),
                       nombre: $('#agregar_nombre').val(),
-                      cantidadAumnos: $('#agregar_cantidadAlumnos').val()
+                      descripcion: $('#agregar_descripcion').val(),
+                      fecha_estreno: $('#agregar_fecha_estreno').val(),
+                      genero: $('#agregar_genero').val(),
+
                     }
                   })
                   .fail(function(err) {
-                    notificacion('Error al agregar la asignatura: ' + err, 'error');
+                    notificacion('Error al agregar la Pelicula: ' + err, 'error');
                   })
                   .done(function(data) {
                     notificacion(data.mensaje, 'success');
@@ -87,21 +89,22 @@ $(document).ready(function() {
       }
     ],
     columns: [
-      {data: 'codigo', title: 'Código'},
       {data: 'nombre', title: 'Nombre'},
-      {data: 'numeroAlumnos', title: 'Cantidad Alumnos'},
+      {data: 'descripcion', title: 'Descripcion'},
+      {data: 'fecha_estreno', title: 'Fecha_estreno'},
+      {data: 'genero', title: 'Genero'},
       {
         render: function(data, type, row, meta) {
           var publicado = row.publicado;
-          return '' + 
+          return '' +
           '<div class="form-group">' +
             '<div class="btn-group">' +
-              '<button type="button" class="btn-editar btn btn-xs btn-primary">' + 
-                '<i class="glyphicon glyphicon-pencil"></i> Editar' + 
+              '<button type="button" class="btn-editar btn btn-xs btn-primary">' +
+                '<i class="glyphicon glyphicon-pencil"></i> Editar' +
               '</button>' +
-              '<button type="button" class="btn-eliminar btn btn-xs btn-danger">' + 
+              '<button type="button" class="btn-eliminar btn btn-xs btn-danger">' +
                 '<i class="glyphicon glyphicon-trash"></i> Eliminar' +
-              '</button>' + 
+              '</button>' +
             '</div>' +
           '</div>';
         },
@@ -119,30 +122,33 @@ $(document).ready(function() {
 
   function btnEditarEvent() {
     var fila = $(this).closest('tr'),
-    asignatura = tabla.row(fila).data(),
-    id = asignatura.codigo,
-    nombre = asignatura.nombre,
-    cantidadAlumnos = asignatura.cantidadAlumnos
+    peliculas = tabla.row(fila).data(),
+    nombre = peliculas.nombre,
+    descripcion = peliculas.descripcion,
+    fecha_estreno = peliculas.fecha_estreno,
+    genero = peliculas.genero,
     ;
 
-    console.log('Editar asignatura con id ' + id);
+    console.log('Editar Pelicula con id ' + nombre);
     bootbox.dialog({
-      title: 'Editar asignatura',
-      message: '' + 
+      title: 'Editar Pelicula',
+      message: '' +
       '<div class="form-group">' +
         '<div class="input-group">' +
           '<span class="input-group-addon">' +
             '<i class="glyphicon glyphicon-tag"></i>' +
           '</span>' +
-          '<input type="text" id="editar_nombre" class="form-control" value="' + nombre + '" placeholder="Nombre de asignatura">' +
+          '<input type="text" id="editar_nombre" class="form-control" value="' + nombre + '" placeholder="Nombre de Pelicula">' +
         '</div>' +
-      '</div>' + 
+      '</div>' +
       '<div class="form-group">' +
         '<div class="input-group">' +
           '<span class="input-group-addon">' +
             '<i class="glyphicon glyphicon-tag"></i>' +
           '</span>' +
-          '<input type="text" id="editar_cantidadAlumnos" class="form-control" value="' + cantidadAlumnos + '" placeholder="Cantidad de ALumnos">' +
+          '<input type="text" id="editar_descripcion" class="form-control" value="' + descripcion + '" placeholder="Descripcion Pelicula">' +
+          '<input type="date" id="editar_fecha" class="form-control" value="' + fecha_estreno + '" placeholder="Fecha De Estreno">' +
+          '<input type="text" id="editar_genero" class="form-control" value="' + genero + '" placeholder="Genero Pelicula">' +
         '</div>' +
       '</div>',
       buttons: {
@@ -159,7 +165,7 @@ $(document).ready(function() {
           callback: function(e) {
             e.preventDefault();
             $.ajax({
-              url: 'asignaturas/listarAsignaturas',
+              url: 'peliculas/listarPeliculas',
               method: 'get',
               cache: false
             })
@@ -171,16 +177,17 @@ $(document).ready(function() {
             });
 
             $.ajax({
-              url: 'asignaturas/editar',
+              url: 'peliculas/editar',
               method: 'post',
               data: {
-                codigo: id,
                 nombre: $('#editar_nombre').val(),
-                cantidadAlumnos: $('#editar_cantidadAlumnos').val()
+                descripcion: $('#editar_descripcion').val(),
+                fecha_estreno: $('#editar_fecha').val(),
+                genero: $('#editar_genero').val(),
               }
             })
             .fail(function(err) {
-              notificacion('Error al editar la asignatura: ' + err, 'error');
+              notificacion('Error al editar la Pelicula: ' + err, 'error');
             })
             .done(function(data) {
               notificacion(data.mensaje, 'success');
@@ -191,16 +198,14 @@ $(document).ready(function() {
       }
 
     });
-    // Redireccionar a vista de edición
-    // location.href = '/asignaturas/editar/' + id;
   }
 
   function btnEliminarEvent() {
     var fila = $(this).closest('tr'),
-    asignatura = tabla.row(fila).data(),
-    id = asignatura.codigo
+    peliculas = tabla.row(fila).data(),
+    nombre = peliculas.nombre,
     ;
-    bootbox.confirm('¿Estás seguro que deseas <b>eliminar</b> esta asignatura?', function(confirm) {
+    bootbox.confirm('¿Estás seguro que deseas <b>eliminar</b> esta Pelicula?', function(confirm) {
       console.log(id);
       if(confirm) {
         // Eliminar dato de la tabla
@@ -208,12 +213,12 @@ $(document).ready(function() {
 
         // Realizar petición ajax para eliminar
         $.ajax({
-          url: 'asignaturas/eliminar',
+          url: 'peliculas/eliminar',
           method: 'POST',
-          data: {id: id}
+          data: {nombre: nombre}
         })
         .fail(function(err) {
-          notificacion('Error al eliminar la asignatura: ' + err, 'error');
+          notificacion('Error al eliminar la pelicula: ' + err, 'error');
         })
         .done(function(data) {
           notificacion(data.mensaje, 'success');

@@ -2,23 +2,24 @@
 
 	<div id="body">
 		<h1> Listando los datos cargados a la vista</h1>
-		
-		 <a href='<?php echo base_url('asignaturas/agregar');?>'>Crear</a>
-		<table class='table'> 
+
+		 <a href='<?php echo base_url('peliculas/agregar');?>'>Crear</a>
+		<table class='table'>
 			<tr>
-	
-				<td>Codigo</td>
-				<td>Descripcion</td>
-				<td>Numero de Alumnos</td>
-			</tr>			
-			<?php foreach($asignaturas as $a){ ?>
+
+				<td>nombre</td>
+				<td>descripcion</td>
+				<td>fecha_estreno</td>
+				<td>genero</td>
+			</tr>
+			<?php foreach($peliculas as $a){ ?>
 				<tr>
-				
-					<td> <?php echo $a->codigo; ?> </td>
 					<td> <?php echo $a->nombre; ?> </td>
-					<td> <?php echo $a->numeroAlumnos; ?> </td>
+					<td> <?php echo $a->descripcion; ?> </td>
+					<td> <?php echo $a->fecha_estreno; ?> </td>
+					<td> <?php echo $a->genero; ?> </td>
 					<td>
-						 <a href='<?php echo base_url('asignaturas/eliminar')."?". $a->codigo; ?>'>Eliminar</a>
+						 <a href='<?php echo base_url('peliculas/eliminar')."?". $a->codigo; ?>'>Eliminar</a>
 				    </td>
 				</tr>
 			<?php } ?>
