@@ -47,7 +47,8 @@ $config['migration_table'] = 'migrations';
 
 /*
 |--------------------------------------------------------------------------
-| Auto Migrate To Latest
+| A
+uto Migrate To Latest
 |--------------------------------------------------------------------------
 |
 | If this is set to TRUE when you load the migrations class and have

@@ -7,7 +7,7 @@ class Peliculas_model extends CI_Model {
     parent::__construct();
   }
 
-  public function set_peliculas($nom, $des, $fecha, $genero) {
+  public function set_peliculas($nom, $des, $fecha, $gen) {
     $data = array(
       'nombre' => $nom,
       'descripcion' => $des,
@@ -26,7 +26,7 @@ class Peliculas_model extends CI_Model {
     $this->db->delete('peliculas', $data);
   }
 
-  public function update_peliculas($nom, $des, $fecha, $genero) {
+  public function update_peliculas($nom, $des, $fecha, $gen) {
     $this->db->set('nombre', $nom);
     $this->db->set('descripcion', $des);
     $this->db->set('fecha_estreno', $fecha);
